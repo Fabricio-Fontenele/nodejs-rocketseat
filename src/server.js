@@ -26,21 +26,35 @@ import http from "node:http";
 
 // HTTP Status Code
 
-const Users = [];
+const users = [];
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
   const { method, url } = req;
+
+  const buffers = [];
+
+  for await (const chunk of req) {
+    buffers.push(chunk);
+  }
+
+  try {
+    req.body = JSON.parse(Buffer.concat(buffers).toString());
+  } catch {
+    req.body = null;
+  }
 
   if (method === "GET" && url === "/users") {
     return res
       .setHeader("content-type", "aplication/json")
-      .end(JSON.stringify(Users));
+      .end(JSON.stringify(users));
   }
   if (method === "POST" && url === "/users") {
-    Users.push({
+    const { name, email } = req.body;
+
+    users.push({
       id: 1,
-      name: "Jonh Doe",
-      email: "jonhdoe@example.com",
+      name,
+      email,
     });
     return res.writeHead(201).end();
   }
