@@ -4,6 +4,11 @@
       "id": "3b5ecef7-c343-4968-be61-ea77e3ba9ef1",
       "name": "jonh Doe",
       "email": "jonhdoe@example"
+    },
+    {
+      "id": "09ede5ad-5271-4cbd-af3e-0f77ac9a19d7",
+      "name": "Diego Fernandes",
+      "email": "diego@rocketseat.com.br"
     }
   ]
 }
