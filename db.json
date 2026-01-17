@@ -1,1 +1,9 @@
-{"users":[{"id":"3b5ecef7-c343-4968-be61-ea77e3ba9ef1","name":"Diego Fernandes","email":"diego@rocketseat.com.br"}]}
+{
+  "users": [
+    {
+      "id": "3b5ecef7-c343-4968-be61-ea77e3ba9ef1",
+      "name": "jonh Doe",
+      "email": "jonhdoe@example"
+    }
+  ]
+}
