@@ -1,11 +1,20 @@
 import { DataBase } from "./database.js";
 import { randomUUID } from "node:crypto";
+import { buildRoutePath } from "./utils/build-route-path.js";
+
+// Query Paramenters => URL Stateful =>  filtro, paginação, não obrigatórios
+// Route Parameters => Identificação de recurso
+// Request Body => Envio de informações de um formulário
+
+//http://localhost:3333/users?name=Bruno&age=28 => Query Parameters
+//GET http://localhost:3333/users/1 => Route Parameters
+//DELETE http://localhost:3333/users/1 => Route Parameters
 
 const database = new DataBase();
 export const routes = [
   {
     method: "GET",
-    path: "/users",
+    path: buildRoutePath("/users"),
     handler: (req, res) => {
       const users = database.select("users");
 
@@ -14,7 +23,7 @@ export const routes = [
   },
   {
     method: "POST",
-    path: "/users",
+    path: buildRoutePath("/users"),
     handler: (req, res) => {
       const { name, email } = req.body;
 
@@ -26,6 +35,16 @@ export const routes = [
 
       database.insert("users", user);
       return res.writeHead(201).end();
+    },
+  },
+  {
+    method: "DELETE",
+    path: buildRoutePath("/users/:id"),
+    handler: (req, res) => {
+      const { id } = req.params;
+
+      database.delete("users", id);
+      return res.writeHead(204).end();
     },
   },
 ];
