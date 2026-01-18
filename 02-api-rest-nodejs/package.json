@@ -24,7 +24,9 @@
   },
   "dependencies": {
     "dotenv": "^16",
-    "fastify": "^5.7.1"
+    "fastify": "^5.7.1",
+    "knex": "^3.1.0",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "@rocketseat/eslint-config": "^2.2.2",
@@ -33,7 +35,6 @@
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
     "eslint": "^8",
-    "eslint-config-love": "^113",
     "eslint-config-prettier": "^9",
     "eslint-import-resolver-typescript": "^3",
     "eslint-plugin-import": "^2",
